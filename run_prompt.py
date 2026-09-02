@@ -90,6 +90,8 @@ def run(profile: str, user_prompt: str, system: str | None, temperature: float) 
 
 
 def main() -> None:
+    global API_KEY, BASE_URL
+
     parser = argparse.ArgumentParser(description="Run marketing prompts via FreeLLMAPI")
     parser.add_argument(
         "--profile",
@@ -111,7 +113,6 @@ def main() -> None:
             print(f"  {name:15} — {desc}")
         return
 
-    global API_KEY, BASE_URL
     API_KEY = args.api_key
     BASE_URL = args.base_url
 
