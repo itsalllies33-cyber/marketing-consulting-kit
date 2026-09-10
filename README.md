@@ -40,16 +40,30 @@ Every pack ends with a checklist the operator completes — not the model. Typic
 
 ## Quick start
 
-Works with any OpenAI-compatible endpoint. The notes below use [FreeLLMAPI](https://github.com/tashfeenahmed/freellmapi) locally; you can point `run_prompt.py` at another base URL.
+Works with any OpenAI-compatible endpoint. Two providers are built in: **Claude**
+(Anthropic's OpenAI-compatible endpoint) and **FreeLLMAPI** (a local gateway with
+`auto:<profile>` routing). `--provider auto` (the default) uses Claude when
+`ANTHROPIC_API_KEY` is set, otherwise FreeLLMAPI.
 
 1. Create routing profiles from [`routing-profiles.md`](routing-profiles.md) (or skip if you call a single model).
 2. Pick a prompt from `prompts/`, fill in the `{{variables}}`.
 3. Run via your playground, or:
 
 ```bash
-pip install openai
-python run_prompt.py --profile seo-research --prompt-file prompts/01-seo-content-package.md
+pip install -r requirements.txt
+
+# Smoke-test with zero API keys — prints exactly what would be sent, no network call:
+python run_prompt.py --dry-run --profile seo-research --prompt-file prompts/01-seo-content-package.md
+
+# Live via Claude (set ANTHROPIC_API_KEY first):
+python run_prompt.py --provider claude --profile seo-research --prompt-file prompts/01-seo-content-package.md
+
+# Live via a FreeLLMAPI gateway:
+python run_prompt.py --provider freellmapi --profile seo-research --prompt-file prompts/01-seo-content-package.md
 ```
+
+Claude model ids are configurable via `--model` or `CLAUDE_MODEL_SMART|BALANCED|FAST`.
+Run the offline test suite with `pip install -r requirements-dev.txt && pytest -q`.
 
 4. Score the output with the pack checklist and [`EVALUATION.md`](EVALUATION.md).
 5. Human-edit before anything goes to a client.
@@ -73,7 +87,7 @@ resp = client.chat.completions.create(
 print(resp.choices[0].message.content)
 ```
 
-Set `FREELLMAPI_KEY` (or `--api-key`) rather than hard-coding secrets.
+Set `ANTHROPIC_API_KEY` (for Claude) or `FREELLMAPI_KEY` (for the gateway) — or pass `--api-key` — rather than hard-coding secrets.
 
 ## License
 

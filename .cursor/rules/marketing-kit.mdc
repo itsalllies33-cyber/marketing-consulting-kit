@@ -1,0 +1,35 @@
+---
+description: How to run, smoke-test, and extend the Marketing Consulting Kit prompt runner
+globs: ["run_prompt.py", "prompts/**", "tests/**", "requirements*.txt"]
+alwaysApply: false
+---
+
+# Marketing Consulting Kit — working notes
+
+## What this repo is
+Prompt packs (`prompts/`) plus a small runner (`run_prompt.py`) that calls any
+OpenAI-compatible endpoint. Deliverables are graded by humans via `EVALUATION.md`;
+the code only moves a filled prompt to a model and prints the reply.
+
+## Running the runner
+- Zero-key smoke test (no network, stdlib only): `python run_prompt.py --dry-run --profile ad-copy --text "..."`
+- Live Claude (needs `ANTHROPIC_API_KEY`): `python run_prompt.py --provider claude --profile seo-research --prompt-file prompts/01-seo-content-package.md`
+- Live FreeLLMAPI gateway: `--provider freellmapi` (expects a gateway at `FREELLMAPI_URL`, default `localhost:3001`).
+- `--provider auto` (default) picks `claude` when `ANTHROPIC_API_KEY` is set, else `freellmapi`.
+- Profile → model: freellmapi uses `auto:<profile>`; claude uses `CLAUDE_MODELS`
+  (override per run with `--model`, or globally via `CLAUDE_MODEL_SMART|BALANCED|FAST`).
+  Claude model ids change over time — treat the defaults as overridable.
+
+## Testing
+- `pip install -r requirements-dev.txt && pytest -q` — offline, no keys.
+- CI runs the same checks on push/PR (`.github/workflows/ci.yml`).
+- Verification order for any provider change: `--dry-run` first, then a local mock
+  endpoint, then a real key. Never commit keys — use env vars / Cursor secrets.
+
+## Gotchas / lessons
+- Keep `--dry-run` and `--list-profiles` dependency-free: import `openai` lazily,
+  only inside the live request path.
+- Python: declare `global` before first use — a `global`-after-use `SyntaxError`
+  previously made the whole script fail to launch.
+- Dev environment is just Python 3.12 + `openai` (`requirements.txt`); install with
+  `pip install --user -r requirements.txt`.
