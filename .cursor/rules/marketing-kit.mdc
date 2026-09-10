@@ -1,6 +1,6 @@
 ---
 description: How to run, smoke-test, and extend the Marketing Consulting Kit prompt runner
-globs: ["run_prompt.py", "prompts/**", "tests/**", "requirements*.txt"]
+globs: ["run_prompt.py", "prompts/**", "tests/**", "requirements*.txt", ".github/workflows/**"]
 alwaysApply: false
 ---
 
@@ -11,20 +11,23 @@ Prompt packs (`prompts/`) plus a small runner (`run_prompt.py`) that calls any
 OpenAI-compatible endpoint. Deliverables are graded by humans via `EVALUATION.md`;
 the code only moves a filled prompt to a model and prints the reply.
 
-## Running the runner
-- Zero-key smoke test (no network, stdlib only): `python run_prompt.py --dry-run --profile ad-copy --text "..."`
-- Live Claude (needs `ANTHROPIC_API_KEY`): `python run_prompt.py --provider claude --profile seo-research --prompt-file prompts/01-seo-content-package.md`
-- Live FreeLLMAPI gateway: `--provider freellmapi` (expects a gateway at `FREELLMAPI_URL`, default `localhost:3001`).
-- `--provider auto` (default) picks `claude` when `ANTHROPIC_API_KEY` is set, else `freellmapi`.
-- Profile → model: freellmapi uses `auto:<profile>`; claude uses `CLAUDE_MODELS`
-  (override per run with `--model`, or globally via `CLAUDE_MODEL_SMART|BALANCED|FAST`).
-  Claude model ids change over time — treat the defaults as overridable.
+## Commands (source of truth — don't duplicate here)
+- Flags & usage: `python run_prompt.py --help`
+- Setup & examples: `README.md` Quick start
+- In short: `--provider auto` (default) picks `claude` when `ANTHROPIC_API_KEY` is set,
+  else the `freellmapi` gateway. `--dry-run` prints the resolved request and makes no call.
 
 ## Testing
-- `pip install -r requirements-dev.txt && pytest -q` — offline, no keys.
-- CI runs the same checks on push/PR (`.github/workflows/ci.yml`).
-- Verification order for any provider change: `--dry-run` first, then a local mock
-  endpoint, then a real key. Never commit keys — use env vars / Cursor secrets.
+- Offline, no keys: `pip install -r requirements-dev.txt && pytest -q`
+- CI runs the same on push/PR (`.github/workflows/ci.yml`).
+- Keep tests offline: use an in-process mock server, never a real endpoint or key.
+- Verify any provider change in order: `--dry-run` → local mock → real key.
+
+## Model IDs (Claude drifts over time)
+- Defaults live in `CLAUDE_MODELS` in `run_prompt.py`; override with `--model` or
+  `CLAUDE_MODEL_SMART|BALANCED|FAST`.
+- If a model id is rejected, discover valid ones and retry with `--model`:
+  `client.models.list()` against `https://api.anthropic.com/v1/` using `ANTHROPIC_API_KEY`.
 
 ## Gotchas / lessons
 - Keep `--dry-run` and `--list-profiles` dependency-free: import `openai` lazily,
@@ -33,3 +36,8 @@ the code only moves a filled prompt to a model and prints the reply.
   previously made the whole script fail to launch.
 - Dev environment is just Python 3.12 + `openai` (`requirements.txt`); install with
   `pip install --user -r requirements.txt`.
+
+## Before committing
+- [ ] `pytest -q` passes
+- [ ] `python run_prompt.py --dry-run --profile ad-copy --text "x"` still prints (no import/syntax break)
+- [ ] no keys or secrets in the diff (see the always-on `secrets` rule)
