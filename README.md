@@ -15,6 +15,7 @@ This kit turns ambiguous client work into a repeatable AI workflow: fill variabl
 | [`client-proposal.md`](client-proposal.md) | One-page proposal template |
 | [`prompts/`](prompts/) | Seven fill-in prompt packs, each with a human quality checklist |
 | [`run_prompt.py`](run_prompt.py) | Small runner for local OpenAI-compatible APIs |
+| [`trader/`](trader/) | Claude Trader: strategy/screen/contract research prompts + a daily four-layer options-book monitor and dashboard |
 
 ## Prompt packs
 

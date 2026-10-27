@@ -7,3 +7,7 @@ __pycache__/
 .pytest_cache/
 .DS_Store
 Thumbs.db
+
+# trader: personal book and daily outputs stay local
+trader/portfolio.json
+trader/out/

@@ -1,0 +1,33 @@
+{
+  "account": {
+    "name": "Sample LEAPS + small-cap book",
+    "broker": "Robinhood (manual entry)",
+    "starting_nav": 48560,
+    "cash": 18000,
+    "strategy": "LEAPS (>45 DTE, ideally 6-18 months) on liquid large caps with reasonably priced IV; shares only on smaller caps where options are illiquid or IV is too rich. Beaten-down names with a dated catalyst; stagger catalyst windows and sectors.",
+    "risk_tolerance": "Aggressive but capped: max loss per options position = premium paid; no single name above 25% of NAV."
+  },
+  "settings": {
+    "risk_free_rate": 0.04,
+    "min_dte_warning": 45,
+    "iv_move_alert_pts": 5,
+    "max_position_pct": 25
+  },
+  "watch": [],
+  "positions": [
+    {"id": "NOW-200C-2027-06", "ticker": "NOW", "type": "call", "strike": 200, "expiry": "2027-06-17", "qty": 4,
+     "cost_basis": 14.20, "target_pct": 100, "stop_pct": -50, "sector": "Enterprise Software",
+     "thesis": "Post-earnings selloff overdone; long-dated call gives the AI-agent story a year to rerate."},
+    {"id": "NOK-8C-2027-01", "ticker": "NOK", "type": "call", "strike": 8, "expiry": "2027-01-15", "qty": 40,
+     "cost_basis": 0.62, "target_pct": 150, "stop_pct": -60, "sector": "AI Infrastructure",
+     "thesis": "European AI networking play; cheap OTM calls with skewed payoff."},
+    {"id": "HIMS-30C-2026-12", "ticker": "HIMS", "type": "call", "strike": 30, "expiry": "2026-12-04", "qty": 10,
+     "cost_basis": 3.10, "target_pct": 100, "stop_pct": -50, "sector": "Healthcare",
+     "thesis": "Near-term catalyst: earnings + new product line."},
+    {"id": "NBIS-110C-2027-03", "ticker": "NBIS", "type": "call", "strike": 110, "expiry": "2027-03-19", "qty": 3,
+     "cost_basis": 16.00, "target_pct": 100, "stop_pct": -50, "sector": "AI Infrastructure",
+     "thesis": "Medium-term catalyst: data-center capacity coming online."},
+    {"id": "MP-SH", "ticker": "MP", "type": "stock", "qty": 250, "cost_basis": 58.00, "stop_pct": -20,
+     "sector": "Materials", "thesis": "Government-backed rare-earth supply; slow catalyst, so a small position."}
+  ]
+}

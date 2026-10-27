@@ -1,0 +1,232 @@
+{
+ "as_of": "2026-10-27",
+ "note": "SAMPLE DATA \u2014 fictional prices and headlines for offline demos and tests.",
+ "risk_free_rate": 0.04,
+ "tickers": {
+  "NOW": {
+   "spot": 186.4,
+   "iv": 0.38,
+   "history": {
+    "seed": "NOW",
+    "vol": 0.03,
+    "drift": 0.0004
+   },
+   "chain": {
+    "2026-12-18": [
+     160,
+     170,
+     180,
+     190,
+     200,
+     210
+    ],
+    "2027-06-17": [
+     150,
+     160,
+     170,
+     180,
+     190,
+     200,
+     210,
+     220,
+     230,
+     240
+    ]
+   },
+   "news": [
+    {
+     "title": "[Sample] ServiceNow guides subscription revenue above consensus",
+     "publisher": "Sample Wire",
+     "published": "2026-10-26"
+    },
+    {
+     "title": "[Sample] Analyst upgrades NOW citing AI agent adoption",
+     "publisher": "Sample Street",
+     "published": "2026-10-25"
+    }
+   ]
+  },
+  "NOK": {
+   "spot": 7.9,
+   "iv": 0.45,
+   "history": {
+    "seed": "NOK",
+    "vol": 0.03,
+    "drift": 0.0004
+   },
+   "chain": {
+    "2026-12-18": [
+     6,
+     7,
+     8,
+     9
+    ],
+    "2027-01-15": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "2027-03-19": [
+     6,
+     7,
+     8,
+     9,
+     10
+    ]
+   },
+   "news": [
+    {
+     "title": "[Sample] Nokia wins European data-center optical contract",
+     "publisher": "Sample Wire",
+     "published": "2026-10-26"
+    }
+   ]
+  },
+  "HIMS": {
+   "spot": 36.9,
+   "iv": 0.74,
+   "history": {
+    "seed": "HIMS",
+    "vol": 0.03,
+    "drift": 0.0004
+   },
+   "chain": {
+    "2026-12-04": [
+     20,
+     22.5,
+     25,
+     27.5,
+     30,
+     32.5,
+     35,
+     37.5,
+     40,
+     42.5
+    ],
+    "2027-01-15": [
+     25,
+     30,
+     35,
+     40,
+     45
+    ]
+   },
+   "news": [
+    {
+     "title": "[Sample] Hims & Hers beats on subscribers, raises full-year outlook",
+     "publisher": "Sample Wire",
+     "published": "2026-10-27"
+    }
+   ]
+  },
+  "NBIS": {
+   "spot": 97.5,
+   "iv": 0.71,
+   "history": {
+    "seed": "NBIS",
+    "vol": 0.03,
+    "drift": 0.0004
+   },
+   "chain": {
+    "2026-12-18": [
+     80,
+     90,
+     100,
+     110
+    ],
+    "2027-03-19": [
+     70,
+     80,
+     90,
+     100,
+     110,
+     120,
+     130,
+     140,
+     150
+    ]
+   },
+   "news": [
+    {
+     "title": "[Sample] Nebius delays one data-center site by a quarter",
+     "publisher": "Sample Daily",
+     "published": "2026-10-27"
+    }
+   ]
+  },
+  "MP": {
+   "spot": 52.4,
+   "iv": 0.55,
+   "history": {
+    "seed": "MP",
+    "vol": 0.03,
+    "drift": 0.0004
+   },
+   "chain": {
+    "2026-12-18": [
+     45,
+     50,
+     55,
+     60
+    ]
+   },
+   "news": [
+    {
+     "title": "[Sample] MP Materials announces rare-earth magnet expansion",
+     "publisher": "Sample Wire",
+     "published": "2026-10-24"
+    }
+   ]
+  },
+  "^VIX": {
+   "spot": 18.4,
+   "iv": 0.9,
+   "history": {
+    "seed": "^VIX",
+    "vol": 0.05,
+    "drift": 0.0004
+   }
+  },
+  "SPY": {
+   "spot": 682.0,
+   "iv": 0.3,
+   "history": {
+    "seed": "SPY",
+    "vol": 0.012,
+    "drift": 0.0004
+   }
+  },
+  "RSP": {
+   "spot": 191.5,
+   "iv": 0.3,
+   "history": {
+    "seed": "RSP",
+    "vol": 0.012,
+    "drift": 0.0004
+   }
+  },
+  "HYG": {
+   "spot": 80.6,
+   "iv": 0.3,
+   "history": {
+    "seed": "HYG",
+    "vol": 0.012,
+    "drift": 0.0004
+   }
+  },
+  "IEF": {
+   "spot": 95.9,
+   "iv": 0.3,
+   "history": {
+    "seed": "IEF",
+    "vol": 0.012,
+    "drift": 0.0004
+   }
+  }
+ }
+}
