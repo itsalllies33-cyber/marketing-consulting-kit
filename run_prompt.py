@@ -55,9 +55,9 @@ DEFAULT_SYSTEM = {
 # this keeps working as Anthropic's catalog changes; override with --model.
 ANTHROPIC_BASE_URL = "https://api.anthropic.com/v1/"
 CLAUDE_MODELS = {
-    "seo-research": os.environ.get("CLAUDE_MODEL_SMART", "claude-3-5-sonnet-latest"),
-    "ad-copy": os.environ.get("CLAUDE_MODEL_BALANCED", "claude-3-5-sonnet-latest"),
-    "bulk-copy": os.environ.get("CLAUDE_MODEL_FAST", "claude-3-5-haiku-latest"),
+    "seo-research": os.environ.get("CLAUDE_MODEL_SMART", "claude-sonnet-5-5"),
+    "ad-copy": os.environ.get("CLAUDE_MODEL_BALANCED", "claude-sonnet-5-5"),
+    "bulk-copy": os.environ.get("CLAUDE_MODEL_FAST", "claude-haiku-5-5"),
 }
 
 FREELLMAPI_BASE_URL = os.environ.get("FREELLMAPI_URL", "http://localhost:3001/v1")
