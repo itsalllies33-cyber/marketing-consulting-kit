@@ -4,6 +4,10 @@
 Before starting any piece of work, say in one or two lines how you will verify it
 (which command, which test, or which human check), then do the work and run that check.
 
+## Working rule: show the work as you go
+Narrate each step briefly while working: what you're about to do, then the result
+(diffs, command output, test results). Don't batch everything into a final summary.
+
 ## What this repo is
 - `prompts/` — seven fill-in prompt packs (`{{variables}}`), each ending in a human QA checklist.
 - `run_prompt.py` — small CLI that sends a filled prompt to any OpenAI-compatible endpoint
