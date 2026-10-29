@@ -21,7 +21,7 @@ the code only moves a filled prompt to a model and prints the reply.
   Claude model ids change over time — treat the defaults as overridable.
 
 ## Testing
-- `pip install -r requirements-dev.txt && pytest -q` — offline, no keys.
+- `pip install -r requirements-dev.txt && python -m pytest -q` — offline, no keys.
 - CI runs the same checks on push/PR (`.github/workflows/ci.yml`).
 - Verification order for any provider change: `--dry-run` first, then a local mock
   endpoint, then a real key. Never commit keys — use env vars / Cursor secrets.

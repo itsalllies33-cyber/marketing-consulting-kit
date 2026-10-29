@@ -63,7 +63,7 @@ python run_prompt.py --provider freellmapi --profile seo-research --prompt-file 
 ```
 
 Claude model ids are configurable via `--model` or `CLAUDE_MODEL_SMART|BALANCED|FAST`.
-Run the offline test suite with `pip install -r requirements-dev.txt && pytest -q`.
+Run the offline test suite with `pip install -r requirements-dev.txt && python -m pytest -q`.
 
 4. Score the output with the pack checklist and [`EVALUATION.md`](EVALUATION.md).
 5. Human-edit before anything goes to a client.

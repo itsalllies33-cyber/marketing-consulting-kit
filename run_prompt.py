@@ -144,17 +144,17 @@ def run(provider: str, profile: str, user_prompt: str, system: str | None,
             print()
         return
 
-    try:
-        from openai import OpenAI
-    except ImportError:
-        print("Install: pip install openai")
-        sys.exit(1)
-
     if provider == "claude" and not key_is_usable(provider, resolved_key):
         print(
             "ANTHROPIC_API_KEY is not set. Add it as a secret / env var, pass "
             "--api-key, or use --dry-run to smoke-test without a key."
         )
+        sys.exit(1)
+
+    try:
+        from openai import OpenAI
+    except ImportError:
+        print("Install: pip install openai")
         sys.exit(1)
 
     client = OpenAI(base_url=resolved_base, api_key=resolved_key or "placeholder")
